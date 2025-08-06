@@ -55,16 +55,15 @@
                                         </div>
                                     </div>
                                     <div class="no-gutters text-center d-flex justify-content-between">
-                                        <div class="forgot-password">
-                                            <a href="{{route('password.email')}}" rel="nofollow">
-                                                Quên mật khẩu?
-                                            </a>
-                                        </div>
+
+                                        <!-- Đã xóa link quên mật khẩu ở đây -->
+
                                         <div class="forgot-password">
                                             <a href="{{route('register')}}" rel="nofollow">
                                                 Tạo tài khoản mới!
                                             </a>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="clearfix">

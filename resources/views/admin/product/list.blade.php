@@ -59,7 +59,8 @@
                                         <h6 class="fw-semibold mb-0">{{$key+1}}</h6>
                                     </td>
                                     <td class="border-bottom-0 d-flex align-items-center">
-                                        <img class="rounded-1" style="width: 40px" src="{{$product->firstImage()->image}}" alt="">
+                                        @php $firstImage = $product->firstImage(); @endphp
+                                        <img class="rounded-1" style="width: 40px" src="{{$firstImage ? asset($firstImage->image) : asset('assets/admin/images/products/default.png')}}" alt="">
                                         <div class="m-2">
                                             <h6 class="fw-semibold mb-1">{{$product->name}}</h6>
                                             <span class="fw-normal">{{$product->category->name}}</span> 

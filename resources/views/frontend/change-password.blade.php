@@ -52,7 +52,7 @@
                                 <label for="password_confirmation">Nhập lại mật khẩu</label>
                                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                             </div>
-                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
                         </form>
 
                     </div>

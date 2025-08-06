@@ -129,38 +129,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="skin_type" class="form-label">Loại da</label>
-                        <select class="form-select" name="skin_type" id="skin_type">
-                            <option value="">--- Chọn loại da ---</option>
-                            <option value="mọi loại da">Mọi loại da</option>
-                            <option value="da thường">Da thường</option>
-                            <option value="da khô">Da khô</option>
-                            <option value="da dầu">Da dầu</option>
-                            <option value="da hỗn hợp">Da hỗn hợp</option>
-                            <option value="da nhạy cảm">Da nhạy cảm</option>
-                        </select>
-                        @error('skin_type')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="texture" class="form-label">Kết cấu</label>
-                        <select class="form-select" name="texture" id="texture">
-                            <option value="">--- Chọn kết cấu ---</option>
-                            <option value="dạng kem">Dạng kem</option>
-                            <option value="dạng gel">Dạng gel</option>
-                            <option value="dạng dầu">Dạng dầu</option>
-                            <option value="dạng sữa">Dạng sữa</option>
-                            <option value="dạng hạt">Dạng hạt</option>
-                            <option value="dạng bọt">Dạng bọt</option>
-                        </select>
-                        @error('texture')
-                            <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label for="description" class="form-label">Mô tả
                             <span class="text-danger">*</span>
                         </label>

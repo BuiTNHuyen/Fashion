@@ -28,9 +28,6 @@
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Địa chỉ</h6>
                                 </th>
-                                <th class="border-bottom-0 text-center">
-                                    <h6 class="fw-semibold mb-0">Trạng thái</h6>
-                                </th>
                                 <th class="border-bottom-0 text-end">
                                     <h6 class="fw-semibold mb-0">Hành động</h6>
                                 </th>
@@ -57,22 +54,8 @@
                                     <td class="border-bottom-0">
                                         <p class="fw-semibold mb-0">{{$user->address}}</p>
                                     </td>
-                                    <td class="border-bottom-0 text-center">
-                                        @if($user->status === 1)
-                                            <p class="fw-semibold mb-0 text-success">Hoạt động</p>
-                                        @else
-                                            <p class="fw-semibold mb-0 text-danger">Bị khóa</p>
-                                        @endif
-                                    </td>
                                     
                                     <td class="border-bottom-0 text-end">
-                                        @if ($user->status === 1)
-                                            <a href="{{route('user.status', $user)}}" onclick="return confirm('Bạn có chắc muốn khóa tài khoản này không?')"
-                                             class="btn btn-outline-warning m-1">Khóa</a>
-                                        @else
-                                            <a href="{{route('user.status', $user)}}" onclick="return confirm('Bạn có chắc muốn mở khóa tài khoản này không?')"
-                                             class="btn btn-outline-success m-1">Mở khóa</a>
-                                        @endif
                                         <a href="{{route('user.destroy', $user)}}" onclick="return confirm('Bạn có chắc muốn xóa tài khoản này không?')"
                                         class="btn btn-outline-danger m-1">Xóa</a>
                                     </td>

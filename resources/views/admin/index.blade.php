@@ -125,7 +125,7 @@
                                             <td class="border-bottom-0">
                                                 <h6 class="fw-semibold mb-0">#{{$key+1}}</h6>
                                             </td>
-                                            <td class="border-bottom-0 text-center">
+                                            <td class="border-bottom-0 text-start">
                                                 <a href="{{route('product.show', $product)}}">
                                                     <h6 class="fw-semibold mb-1">{{Str::limit($product->name, 40)}}</h6>
                                                 </a>

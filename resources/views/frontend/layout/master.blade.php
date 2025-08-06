@@ -4,10 +4,10 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MH Cosmetics - Mỹ phẩm chính hãng</title>
+    <title>MH Fashion - Thời trang đẳng cấp</title>
 
-    <meta name="keywords" content="MH Cosmetics, Cosmetics, Mỹ phẩm chính hãng">
-    <meta name="description" content="MH Cosmetics - Mỹ phẩm chính hãng">
+    <meta name="keywords" content="MH Fashion, Fashion, Thời trang đẳng cấp">
+    <meta name="description" content="MH Fashion - Thời trang đẳng cấp">
     <meta name="author" content="tivatheme">
 
     <!-- Mobile Meta -->
@@ -15,7 +15,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="/assets/frontend/libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/frontend/libs/font-awesome/css/font-awesome.min.css">
@@ -179,6 +179,13 @@
                 -webkit-transform: rotate(0) scale(1) skew(1deg);
             }
         }
+        .mh-logo-text {
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #111;
+            letter-spacing: 1px;
+        }
     </style>
     @stack('css')
 </head>
@@ -199,7 +206,7 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="/">
-                        <img class="logo-mobile img-fluid" src="/assets/frontend/img/home/logo-mobie.png" alt="Prestashop_Furnitica">
+                        <span class="mh-logo-text">MH Fashion</span>
                     </a>
                 </div>
                 
@@ -273,9 +280,9 @@
                         </div>
                     </div>
                     <div class="blockcart block-cart cart-preview tiva-toggle">
-                        <div class="header-cart tiva-toggle-btn">
+                        <!-- <div class="header-cart tiva-toggle-btn">
                             <i class="fa fa-random" aria-hidden="true" title="So sánh sản phẩm"></i>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -289,7 +296,7 @@
                     <div class="col-sm-2 col-md-2 d-flex align-items-center">
                         <div id="logo">
                             <a href="/">
-                                <img class="img-fluid" src="/assets/frontend/img/home/logo-black.png" alt="logo">
+                                <span class="mh-logo-text">MH Fashion</span>
                             </a>
                         </div>
                     </div>
@@ -489,11 +496,11 @@
                                 </div>
 
                             </div>
-                            <div class="blockcart block-cart cart-preview tiva-toggle">
+                            <!-- <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <a href="{{route('compare')}}" class="header-cart tiva-toggle-btn border-0 p-0">
                                     <i class="fa fa-random" aria-hidden="true" title="So sánh sản phẩm"></i>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -558,17 +565,6 @@
                                 <a href="#" id="brand"></a> 
                             </span>
                         </p>
-                        <p>Kết cấu :
-                            <span class="content2">
-                                <a href="#" id="texture"></a>
-                            </span>
-                        </p>
-            
-                        <p>Loại da :
-                            <span class="content2">
-                                <a href="#" id="skin_type"></a>
-                            </span>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -586,7 +582,7 @@
                             <div class="block">
                                 <div class="block-content">
                                     <p class="logo-footer">
-                                        <img src="/assets/frontend/img/home/logo-black.png" alt="img">
+                                        <span class="mh-logo-text">MH Fashion</span>
                                     </p>
                                     <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt
                                         ut labore et dolore magna aliqua. Ut enim ad minim
@@ -761,21 +757,6 @@
         <a href="#">
             <i class="fa fa-long-arrow-up"></i>
         </a>
-    </div>
-
-    <div id="button-contact-zalo" class="">
-        <div id="gom-all-in-one"><!-- v3 -->
-            <div id="zalo-vr" class="button-contact">
-                <div class="phone-vr">
-                    <div class="phone-vr-circle-fill"></div>
-                    <div class="phone-vr-img-circle">
-                        <a target="_blank" href="https://zalo.me/{{env('SDT_ZALO')}}">              
-                            <img src="{{asset('assets/frontend/img/other/zalo.png')}}">
-                        </a>
-                    </div>
-                </div>
-                </div>
-        </div>
     </div>
 
     <!-- menu mobie right -->

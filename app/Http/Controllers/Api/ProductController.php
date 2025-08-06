@@ -22,12 +22,10 @@ class ProductController extends Controller
                     'product_code' => $product->product_code,
                     'price' => convertPrice($product->price),
                     'price_sale' => convertPrice($product->price * (1 - ($product->discount/100))),
-                    'skin_type' => $product->skin_type,
-                    'texture' => $product->texture,
                     'quantity' => $product->quantity,
                     'image_url' => $product->firstImage()->image,
                     'description' => strip_tags($product->description),
-                    'point' => number_format($product->reviews()->avg('point'), 1), 
+                    'point' => number_format($product->reviews()->avg('point'), 1),
                 ]
             ]);
         } else {

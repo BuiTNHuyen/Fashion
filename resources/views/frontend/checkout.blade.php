@@ -25,8 +25,8 @@
                             </li>
                             <li>
                                 <span>
-                                    <span>Thanh toán</span>
-                                </a>
+                                    <span>Thanh toán - Fashion Store</span>
+                                </span>
                             </li>
                         </ol>
                     </div>
@@ -130,20 +130,13 @@
                                                         Thanh toán khi nhận hàng
                                                     </label>
                                                   </div>
-                                                <div class="form-check">
+                                                <!-- <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="payment" id="vnpay" value="vnpay">
                                                     <label class="form-check-label" for="vnpay">
                                                         Ví VNPay
                                                         <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Logo-VNPAY-QR-1.png" alt="" height="25">
                                                     </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="payment" id="momo" value="momo">
-                                                    <label class="form-check-label" for="momo">
-                                                        Ví MOMO
-                                                        <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="" height="25">
-                                                    </label>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="clearfix">
                                                 <div class="row">

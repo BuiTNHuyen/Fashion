@@ -322,23 +322,6 @@
                                                                     <a href="#">{{$product->brand->name}}</a>,
                                                                 </span>
                                                             </p>
-                                                            @if ($product->texture)
-                                                                <p>Kết cấu :
-                                                                    <span class="content2">
-                                                                        <a href="#">{{$product->texture}}</a>,
-                                                                    </span>
-                                                                </p>
-                                                            @endif
-                                                            
-                                                            @if ($product->skin_type)
-                                                                <p>Loại da :
-                                                                    <span class="content2">
-                                                                        <a href="#">{{$product->skin_type}}</a>,
-                                                                    </span>
-                                                                </p>
-                                                            @endif
-
-                                                            
                                                         </div>
                                                     </div>
                                                 </div>

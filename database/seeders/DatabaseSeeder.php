@@ -19,11 +19,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Admin::create([
-            'name' => 'Admin',
-            'email' => 'admin@yomail.com',
-            'password' => bcrypt(123456),
-            'role' => 'Quản trị viên',
+        // \App\Models\Admin::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin@yomail.com',
+        //     'password' => bcrypt(123456),
+        //     'role' => 'Quản trị viên',
+        // ]);
+
+        $this->call([
+            RecommendationDataSeeder::class,
         ]);
     }
 }

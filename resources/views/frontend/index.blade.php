@@ -210,7 +210,7 @@
                                                     <h2 class="title-block">{{$categories->first()->name}}</h2>  
                                                     <div class="title-tab-content d-flex justify-content-start">
                                                         <ul class="nav nav-tabs">
-                                                            @foreach ($categories->first()->children->take(5) as $key=>$child_cate)
+                                                            @foreach ($categories->first()->children->take(2) as $key=>$child_cate)
                                                             <li>
                                                                 <a href="#cate-{{$child_cate->id}}" data-toggle="tab" 
                                                                         class="{{$key==0 ? 'active' : ''}}">{{$child_cate->name}}</a>
@@ -219,7 +219,7 @@
                                                         </ul>
                                                     </div>
                                                     <div class="tab-content">
-                                                        @foreach ($categories->first()->children->take(5) as $key=>$child_cate)
+                                                        @foreach ($categories->first()->children->take(2) as $key=>$child_cate)
                                                             <div id="cate-{{$child_cate->id}}" class="tab-pane fade {{$key==0 ? 'in active show' : ''}}">
                                                                 <div class="saleoff-product-index owl-carousel owl-theme owl-loaded owl-drag">
                                                                     @foreach($child_cate->products as $product)
@@ -360,7 +360,7 @@
                                                     <h2 class="title-block">{{$categories->skip(1)->first()->name}}</h2>  
                                                     <div class="title-tab-content d-flex justify-content-start">
                                                         <ul class="nav nav-tabs">
-                                                            @foreach ($categories->skip(1)->first()->children->take(5) as $key=>$child_cate)
+                                                            @foreach ($categories->skip(1)->first()->children->take(2) as $key=>$child_cate)
                                                             <li>
                                                                 <a href="#cate-{{$child_cate->id}}" data-toggle="tab" 
                                                                         class="{{$key==0 ? 'active' : ''}}">{{$child_cate->name}}</a>
@@ -369,7 +369,7 @@
                                                         </ul>
                                                     </div>
                                                     <div class="tab-content">
-                                                        @foreach ($categories->skip(1)->first()->children->take(5) as $key=>$child_cate)
+                                                        @foreach ($categories->skip(1)->first()->children->take(2) as $key=>$child_cate)
                                                             <div id="cate-{{$child_cate->id}}" class="tab-pane fade {{$key==0 ? 'in active show' : ''}}">
                                                                 <div class="saleoff-product-index owl-carousel owl-theme owl-loaded owl-drag">
                                                                     @foreach($child_cate->products as $product)

@@ -36,6 +36,20 @@ class StaffController extends Controller
         }
     }
 
+    public function edit(Admin $staff){
+        return view('admin.staff.edit', compact('staff'));
+    }
+
+    public function update(Request $request, Admin $staff){
+        $data = $request->validate([
+            'name' => 'required|string',
+            'role' => 'required',
+        ]);
+
+        $staff->update($data);
+        return redirect()->route('staff.index')->with('success', 'Cập nhật nhân viên thành công.');
+    }
+
     public function destroy(Admin $staff){
         $staff->delete();
         return back()->with('success', 'Xóa nhân viên thành công.');

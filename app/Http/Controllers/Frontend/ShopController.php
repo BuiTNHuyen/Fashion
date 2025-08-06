@@ -12,28 +12,28 @@ use App\Models\Viewed;
 use App\Models\Favorite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Services\ProductRecommendationService;
 
 class ShopController extends Controller
 {
     public function index(){
-        //Gợi ý sản phẩm
-        $thirtyDaysAgo = date('Y-m-d', strtotime("-30 days"));
-        $viewed = Viewed::where('user_id', auth('web')->id())->where('created_at', '>', $thirtyDaysAgo)->pluck('product_id')->toArray();
-        $farvorited = Favorite::where('user_id', auth('web')->id())->pluck('product_id')->toArray();
-        $product_ids = array_merge($viewed, $farvorited);
-        $most_category = Product::whereIn('products.id', $product_ids)
-                            ->select('category_id', DB::raw('COUNT(category_id) as count'))
-                            ->groupBy('category_id')
-                            ->orderByDesc('count')
-                            ->limit(3)
-                            ->pluck('category_id')
-                            ->toArray();
-        $product_recommends = Product::whereIn('category_id', $most_category)->orderByDesc('created_at')->get()->take(20);
-
-        $topSellingProducts = Product::select('*', DB::raw('1 as is_best_selling'))->orderByDesc('sold')->get()->take(20);
-        $discountProducts = Product::where('discount', '>', 0)->orderByDesc('id')->limit(20)->get();
+        // Gợi ý sản phẩm với collaborative filtering
+        $product_recommends = [];
+        if(Auth::guard('web')->check()){
+            $userId = Auth::guard('web')->id() ;
+            $recommendationService = new ProductRecommendationService();
+            
+            // Tự động train nếu cần
+            $recommendationService->autoTrainIfNeeded();
+            
+            if ($recommendationService->hasEnoughRecommendationData($userId)) {
+                $product_recommends = $recommendationService->getRecommendations($userId);
+            }
+        }
+        $topSellingProducts = Product::with('images')->select('*', DB::raw('1 as is_best_selling'))->orderByDesc('sold')->get()->take(20);
+        $discountProducts = Product::with('images')->where('discount', '>', 0)->orderByDesc('id')->limit(20)->get();
         $newPosts = Post::orderByDesc('id')->limit(3)->get();
-        $latestProducts = Product::orderByDesc('id')->limit(20)->get();
+        $latestProducts = Product::with('images')->orderByDesc('id')->limit(20)->get();
         return view('frontend.index', compact('discountProducts','topSellingProducts', 'newPosts', 'latestProducts', 'product_recommends'));
     }
 
@@ -162,4 +162,34 @@ class ShopController extends Controller
     public function compare(){
         return view('frontend.compare');
     }
+
+    public function sendContact(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'from' => 'required|email',
+            'message' => 'required|string',
+        ]);
+
+        \App\Models\Contact::create([
+            'name' => $request->name,
+            'from' => $request->from,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->route('contact')->with('success', 'Gửi liên hệ thành công!');
+    }
 }
+
+//Gợi ý sản phẩm
+// $thirtyDaysAgo = date('Y-m-d', strtotime("-30 days"));
+// $viewed = Viewed::where('user_id', auth('web')->id())->where('created_at', '>', $thirtyDaysAgo)->pluck('product_id')->toArray();
+// $farvorited = Favorite::where('user_id', auth('web')->id())->pluck('product_id')->toArray();
+// $product_ids = array_merge($viewed, $farvorited);
+// $most_category = Product::whereIn('products.id', $product_ids)
+//                     ->select('category_id', DB::raw('COUNT(category_id) as count'))
+//                     ->groupBy('category_id')
+//                     ->orderByDesc('count')
+//                     ->limit(3)
+//                     ->pluck('category_id')
+//                     ->toArray();
+// $product_recommends = Product::whereIn('category_id', $most_category)->orderByDesc('created_at')->get()->take(20);

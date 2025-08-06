@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostTypeController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ContactController;
 
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\CartController;
@@ -89,13 +90,14 @@ Route::prefix('admin')->group(function () {
 
         //User
         Route::get('/user', [UserController::class, 'index'])->name('user.index');
-        Route::get('/user/{user}', [UserController::class, 'handleStatus'])->name('user.status');
         Route::get('/user/destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 
         //Staff
         Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
         Route::get('/staff/create', [StaffController::class, 'create'])->name('staff.create');
         Route::post('/staff/create', [StaffController::class, 'store'])->name('staff.store');
+        Route::get('/staff/edit/{staff}', [StaffController::class, 'edit'])->name('staff.edit');
+        Route::post('/staff/edit/{staff}', [StaffController::class, 'update'])->name('staff.update');
         Route::get('/staff/destroy/{staff}', [StaffController::class, 'destroy'])->name('staff.destroy');
 
         //Post Type
@@ -115,6 +117,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/post/edit/{post}', [PostController::class, 'update'])->name('post.update');
         Route::get('/post/show/{post}', [PostController::class, 'show'])->name('post.show');
         Route::delete('/post/delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+
+        //Contact
+        Route::get('/contacts', [ContactController::class, 'index'])->name('admin.contacts');
     });
     
 });
@@ -126,6 +131,8 @@ Route::get('/cua-hang', [ShopController::class, 'shop'])->name('shop');
 Route::get('/danh-muc/{category}', [ShopController::class, 'getProductByCategory'])->name('category');
 Route::get('/san-pham/{product}', [ShopController::class, 'product'])->name('product');
 Route::get('/lien-he', [ShopController::class, 'contact'])->name('contact');
+Route::post('/lien-he', [ShopController::class, 'sendContact'])->name('contact.send');
+Route::get('/so-sanh', [ShopController::class, 'compare'])->name('compare');
 
 //Blog
 Route::get('/bai-viet', [BlogController::class, 'blog'])->name('blog');
@@ -140,20 +147,13 @@ Route::get('/cart/delete/{product_id}', [CartController::class, 'delete'])->name
 Route::get('/dat-hang', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkoutPost');
 Route::get('/checkout/vnPayCheck', [CheckoutController::class, 'vnPayCheck'])->name('checkout.vnpay');
-Route::get('/checkout/momoCheck', [CheckoutController::class, 'momoCheck'])->name('checkout.momo');
 
-Route::get('/so-sanh', [ShopController::class, 'compare'])->name('compare');
 
 Route::middleware(['guest:web'])->group(function () {
     Route::get('/dang-nhap', [AuthUserController::class, 'login'])->name('login');
     Route::post('/dang-nhap', [AuthUserController::class, 'loginPost'])->name('loginPost');
     Route::get('/dang-ky', [AuthUserController::class, 'register'])->name('register');
     Route::post('/dang-ky', [AuthUserController::class, 'registerPost'])->name('registerPost');
-
-    Route::get('/forgot-password', [AuthUserController::class, 'forgotPassword'])->name('password.request');
-    Route::post('/forgot-password', [AuthUserController::class, 'forgotPasswordPost'])->name('password.email');
-    Route::get('/reset-password/{token}', [AuthUserController::class, 'resetPassword'])->name('password.reset');
-    Route::post('/reset-password', [AuthUserController::class, 'resetPasswordPost'])->name('password.update');
 });
 
 

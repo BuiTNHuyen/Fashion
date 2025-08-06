@@ -18,10 +18,32 @@ class CategoryController extends Controller
         view()->share('parent_cates', $parent_cates);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::orderByDesc('id')->get();
-        return view('admin.category.list', compact('categories'));
+        $query = Category::with(['children', 'products']);
+        
+        // Tìm kiếm theo tên danh mục
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhereHas('children', function($childQuery) use ($search) {
+                      $childQuery->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+        
+        // Lấy tất cả danh mục gốc (parent_id = 0) với các danh mục con
+        $categories = $query->where('parent_id', 0)
+            ->orderBy('name')
+            ->get();
+            
+        // Lấy tổng số danh mục để hiển thị
+        $totalCategories = Category::count();
+        $parentCategories = Category::where('parent_id', 0)->count();
+        $childCategories = Category::where('parent_id', '>', 0)->count();
+        
+        return view('admin.category.list', compact('categories', 'totalCategories', 'parentCategories', 'childCategories'));
     }
 
     /**

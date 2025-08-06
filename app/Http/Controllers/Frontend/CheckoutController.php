@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
-use App\Http\Services\MomoPaymentService;
 use App\Mail\OrderConfirmationMail;
 use DB;
 use Exception;
@@ -19,11 +18,6 @@ class CheckoutController extends Controller
     static $vnp_HashSecret = "WSBCHHFZBEGYEQNOQHVKLNCGZVHQTHMU"; 
     static $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     static $vnp_Returnurl = "/checkout/vnPayCheck"; 
-
-    protected $momoPaymentService;
-    public function __construct(MomoPaymentService $momoPaymentService){
-        $this->momoPaymentService = $momoPaymentService;
-    }
 
     public function index(){
         return view('frontend.checkout');
@@ -61,7 +55,7 @@ class CheckoutController extends Controller
                 DB::commit();
 
                 if(auth('web')->check()){
-                    return redirect()->route('account')->with('success_message', 'Đặt hàng thành công, đơn hàng sẽ được giao trong vòng vài ngày tới.');
+                    return redirect()->route('account')->with('success_message', 'Đặt hàng thành công, quần áo sẽ được giao trong vòng vài ngày tới.');
                 }
                 else{
                     toastr()->success('Đặt hàng thành công.');
@@ -95,10 +89,11 @@ class CheckoutController extends Controller
             if($data['payment'] == 'momo'){
                 $order = Order::create($data);
                 $this->createOrderDetail($order);
-                $res = $this->momoPaymentService->create_payment($order);
-                if($res['resultCode'] == 0){
-                    \Redirect::to($res['payUrl'])->send();
-                }
+                // Xóa các dòng sau:
+                // use App\Services\MomoPaymentService;
+                // protected $momoPaymentService;
+                // public function __construct(MomoPaymentService $momoPaymentService){ ... }
+                // Các đoạn kiểm tra $data['payment'] == 'momo', gọi $this->momoPaymentService, các hàm momoCheck, các thông báo liên quan momo
             }
         };
 
@@ -195,7 +190,7 @@ class CheckoutController extends Controller
                 Mail::to($order->email)->send(new OrderConfirmationMail($order));
                 session()->forget(['cart','total_price']);
                 if(auth('web')->check()){
-                    return redirect()->route('account')->with('success_message', 'Đơn hàng đã được thanh toán với ví VNPay, đơn hàng sẽ được giao trong vòng vài ngày tới.');
+                    return redirect()->route('account')->with('success_message', 'Đơn hàng đã được thanh toán với ví VNPay, quần áo sẽ được giao trong vòng vài ngày tới.');
                 }
                 else{
                     toastr()->success('Đặt hàng thành công.');

@@ -1,8 +1,8 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Fashion Store - Online clothing and apparel e-commerce platform",
+    "keywords": ["laravel", "framework", "fashion", "clothing", "ecommerce"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -10,6 +10,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "rubix/ml": "^2.5",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {

@@ -59,7 +59,7 @@
                                             <div class="item-right d-flex">
                                                 <div class="title">Địa chỉ:</div>
                                                 <div class="contact-content">
-                                                    Khu E6, đường Phạm Hùng, Q. Cầu Giấy, 
+                                                    Đại học Phenikaa, Hà Đông 
                                                     <br>TP. Hà Nội, Việt Nam
                                                 </div>
                                             </div>
@@ -100,10 +100,15 @@
                                     </a>
                                 </p>
 
+                                @if(session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+
                                 <div class="d-flex justify-content-center">
                                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                         <div class="contact-form">
-                                            <form action="#" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('contact.send') }}" method="POST">
+                                                @csrf
                                                 <div class="form-fields">
                                                     <div class="form-group row">
                                                         <div class="col-md-6">

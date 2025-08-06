@@ -38,12 +38,12 @@
             <a class="addToWishlist" href="{{route('favorite.add', $product)}}" data-rel="1" onclick="" title="Yêu thích">
                 <i class="fa fa-heart" aria-hidden="true"></i>
             </a>
-            <span class="quick-view product hidden-sm-down" style="cursor: pointer;" data-link-action="quickview" data-id="{{$product->id}}" title="Xem nhanh">
+            <!-- <span class="quick-view product hidden-sm-down" style="cursor: pointer;" data-link-action="quickview" data-id="{{$product->id}}" title="Xem nhanh">
                 <i class="fa fa-search" aria-hidden="true"></i>
-            </span>
-            <span class="quick-view hidden-sm-down" style="cursor: pointer;" onclick="addProdToCompare({{$product->id}})" data-id="{{$product->id}}" title="So sánh">
+            </span> -->
+            <!-- <span class="quick-view hidden-sm-down" style="cursor: pointer;" onclick="addProdToCompare({{$product->id}})" data-id="{{$product->id}}" title="So sánh">
                 <i class="fa fa-random" aria-hidden="true"></i>
-            </span>
+            </span> -->
         </div>
     </div>
 </div>

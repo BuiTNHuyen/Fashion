@@ -7,6 +7,16 @@
     <title>Furnitica - Quản trị viên</title>
     <link rel="shortcut icon" type="image/png" href="/assets/admin/images/logos/favicon.png" />
     <link rel="stylesheet" href="/assets/admin/css/styles.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .mh-logo-text {
+            font-family: 'Baloo 2', cursive;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #111;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,7 +29,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="{{route("admin.dashboard")}}" class="text-nowrap logo-img">
-                        <img src="{{asset('assets/frontend/img/home/logo-black.png')}}" width="150" alt="" />
+                        <span class="mh-logo-text">MH Fashion</span>
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -112,6 +122,14 @@
                                 <span class="hide-menu">Bài viết</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admin.contacts') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-message-circle"></i>
+                                </span>
+                                <span class="hide-menu">Liên hệ</span>
+                            </a>
+                        </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Tài khoản</span>
@@ -151,12 +169,6 @@
                                 <i class="ti ti-menu-2"></i>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
-                            </a>
-                        </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
@@ -166,7 +178,7 @@
                                     <img src="/assets/admin/images/profile/user-1.jpg" alt="" width="35" height="35"
                                         class="rounded-circle">
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                <!-- <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
                                     <div class="message-body">
                                         <a href="javascript:void(0)"
@@ -177,7 +189,7 @@
                                         <a href="./authentication-login.html"
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </li>
                         </ul>
                     </div>

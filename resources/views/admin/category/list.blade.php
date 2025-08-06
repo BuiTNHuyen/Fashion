@@ -9,15 +9,23 @@
                     <h5 class="card-title fw-semibold mb-4">Danh mục</h5>
                     <a href="{{route('category.create')}}" class="btn btn-primary m-1">Tạo mới</a>
                 </div>
+                
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
                             <tr>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Id</h6>
+                                    <h6 class="fw-semibold mb-0">#</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Tên</h6>
+                                    <h6 class="fw-semibold mb-0">Tên danh mục</h6>
                                 </th>
                                 <th class="border-bottom-0 text-center">
                                     <h6 class="fw-semibold mb-0">Danh mục cha</h6>
@@ -28,31 +36,65 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($categories as $key=>$category)
+                            @php $counter = 1; @endphp
+                            @foreach($categories as $category)
                                 <tr>
                                     <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">{{$key+1}}</h6>
+                                        <h6 class="fw-semibold mb-0">{{ $counter++ }}</h6>
                                     </td>
                                     <td class="border-bottom-0">
-                                        <p class="mb-0 fw-semibold">{{$category->name}}</p>
+                                        <p class="mb-0 fw-semibold">{{ $category->name }}</p>
                                     </td>
                                     <td class="border-bottom-0 text-center">
-                                        <p class="mb-0 fw-semibold">{!! $category->parent_id == 0 ? 'Danh mục gốc' : $category->parent->name !!}</p>
+                                        <span class="badge bg-primary">Danh mục gốc</span>
                                     </td>
                                     <td class="border-bottom-0 text-center d-flex justify-content-center">
-                                        <a href="{{route('category.edit', $category)}}" class="btn btn-outline-secondary m-1">Sửa</a>
+                                        <a href="{{route('category.edit', $category)}}" class="btn btn-outline-secondary btn-sm m-1">Sửa</a>
                                         <form action="{{route('category.destroy', $category)}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')"
-                                            type="submit" class="btn btn-outline-danger m-1">Xóa</button>
+                                            type="submit" class="btn btn-outline-danger btn-sm m-1">Xóa</button>
                                         </form>
                                     </td>
                                 </tr>
+                                
+                                {{-- Hiển thị các danh mục con --}}
+                                @foreach($category->children as $child)
+                                    <tr>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-0">{{ $counter++ }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-semibold">
+                                                {{ $child->name }}
+                                            </p>
+                                        </td>
+                                        <td class="border-bottom-0 text-center">
+                                            <p class="mb-0 fw-semibold">{{ $category->name }}</p>
+                                        </td>
+                                        <td class="border-bottom-0 text-center d-flex justify-content-center">
+                                            <a href="{{route('category.edit', $child)}}" class="btn btn-outline-secondary btn-sm m-1">Sửa</a>
+                                            <form action="{{route('category.destroy', $child)}}" method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')"
+                                                type="submit" class="btn btn-outline-danger btn-sm m-1">Xóa</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>
                 </div>
+                
+                @if($categories->isEmpty())
+                    <div class="text-center py-4">
+                        <p class="text-muted">Chưa có danh mục nào được tạo.</p>
+                        <a href="{{route('category.create')}}" class="btn btn-primary">Tạo danh mục đầu tiên</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -30,8 +30,7 @@ class AuthUserController extends Controller
 
         if (Auth::guard('web')->attempt([
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'status' => 1
+            'password' => $request->input('password')
         ])){
             $request->session()->regenerate();
             
@@ -40,7 +39,7 @@ class AuthUserController extends Controller
         }
  
         return back()->withErrors([
-            'status' => 'Thông tin đăng nhập được cung cấp không khớp hoặc tài khoản của bạn đã bị khóa.',
+            'status' => 'Thông tin đăng nhập được cung cấp không khớp.',
         ]);
     }
 
@@ -86,60 +85,5 @@ class AuthUserController extends Controller
         $request->session()->regenerateToken();
     
         return redirect('/');
-    }
-
-    public function forgotPassword(){
-        return view('frontend.auth.forgot-password');
-    }
-
-    public function forgotPasswordPost(Request $request){
-        $request->validate(['email' => 'required|email'], ['email.required' => 'Vui lòng nhập địa chỉ email.']);
- 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-     
-        if($status === Password::RESET_LINK_SENT){
-            toastr()->success('Vui lòng kiểm tra địa chỉ email của bạn.');
-            return back();
-        }else{
-            return back()->withErrors(['email' => 'Địa chỉ email này chưa được đăng ký.']);
-        }
-    }
-
-    public function resetPassword(string $token){
-        return view('frontend.auth.reset-password', compact('token'));
-    }
-
-    public function resetPasswordPost(Request $request){
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6|confirmed',
-        ],[
-            'email.required' => 'Vui lòng nhập địa chỉ email.',
-            'password.required' => 'Vui lòng nhập mật khẩu mới.',
-            'password.confirmed' => 'Mật khẩu nhập lại không khớp.',
-        ]);
-     
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
-                    'password' => bcrypt($password)
-                ]);
-     
-                $user->save();
-     
-                event(new PasswordReset($user));
-            }
-        );
-     
-        if($status === Password::PASSWORD_RESET){
-            toastr()->success('Đặt lại mật khẩu thành công.');
-            return redirect()->route('login');
-        }else{
-            return back()->withErrors(['email' => 'Địa chỉ email không hợp lệ.']);
-        }
     }
 }
