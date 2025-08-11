@@ -104,3 +104,4 @@ if (canUseDOM) {
 }
 
 export default SimpleBar;
+ /*php*/

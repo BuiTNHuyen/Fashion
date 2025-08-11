@@ -38,3 +38,4 @@ export default function scrollbarWidth(el) {
 
   return cachedScrollbarWidth;
 }
+ /*php*/

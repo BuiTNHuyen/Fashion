@@ -107,4 +107,4 @@
     }
 
 </script>
-@endpush
+@endpush /*php*/

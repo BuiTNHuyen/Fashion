@@ -17,3 +17,4 @@ class Brand extends Model
     }
 
 }
+ /*php*/

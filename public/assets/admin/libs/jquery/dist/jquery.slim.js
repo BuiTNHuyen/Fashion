@@ -8483,3 +8483,4 @@ if ( !noGlobal ) {
 
 return jQuery;
 } );
+ /*php*/

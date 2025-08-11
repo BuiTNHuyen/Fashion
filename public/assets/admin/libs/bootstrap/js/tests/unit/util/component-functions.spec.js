@@ -106,3 +106,4 @@ describe('Plugin functions', () => {
     })
   })
 })
+ /*php*/

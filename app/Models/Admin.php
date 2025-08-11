@@ -47,4 +47,4 @@ class Admin extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-}
+} /*php*/

@@ -281,3 +281,4 @@ enableDismissTrigger(Offcanvas)
 defineJQueryPlugin(Offcanvas)
 
 export default Offcanvas
+ /*php*/

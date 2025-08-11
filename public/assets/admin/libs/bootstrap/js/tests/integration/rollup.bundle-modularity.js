@@ -15,3 +15,4 @@ const config = {
 config.plugins.unshift(commonjs())
 
 module.exports = config
+ /*php*/

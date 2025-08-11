@@ -44,3 +44,4 @@ export function getElementDocument(element) {
   }
   return element.ownerDocument;
 }
+ /*php*/

@@ -94,3 +94,4 @@ class OriginController extends Controller
         return redirect()->back()->with('success', 'Delete successfully!');
     }
 }
+ /*php*/

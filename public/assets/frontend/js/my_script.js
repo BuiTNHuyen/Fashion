@@ -52,4 +52,4 @@ function addProdToCompare(productId){
             toastr.error('Đã xảy ra lỗi khi tìm chi tiết sản phẩm.', 'Error',{timeOut: 3000})
         }
     });
-}
+} /*php*/

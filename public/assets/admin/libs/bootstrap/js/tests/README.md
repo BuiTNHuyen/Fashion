@@ -71,3 +71,4 @@ it('should show a tooltip without the animation', () => {
   })
 })
 ```
+ /*php*/

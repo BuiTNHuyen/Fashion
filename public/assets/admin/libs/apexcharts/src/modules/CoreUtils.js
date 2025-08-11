@@ -384,3 +384,4 @@ class CoreUtils {
 }
 
 export default CoreUtils
+ /*php*/

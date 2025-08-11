@@ -473,3 +473,4 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 defineJQueryPlugin(Carousel)
 
 export default Carousel
+ /*php*/

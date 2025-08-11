@@ -18,3 +18,4 @@ This is the primary file which is an entry point for all tooltip related functio
 
 ### Utils.js
 Helper functions related to tooltips.
+ /*php*/

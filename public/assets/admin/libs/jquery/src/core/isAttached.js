@@ -20,3 +20,4 @@ define( [
 
 	return isAttached;
 } );
+ /*php*/

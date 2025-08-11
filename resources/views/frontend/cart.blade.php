@@ -166,4 +166,4 @@
     }
 
 </script>
-@endpush
+@endpush /*php*/

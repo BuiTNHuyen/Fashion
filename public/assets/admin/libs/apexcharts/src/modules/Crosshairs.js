@@ -136,3 +136,4 @@ class Crosshairs {
 }
 
 export default Crosshairs
+ /*php*/

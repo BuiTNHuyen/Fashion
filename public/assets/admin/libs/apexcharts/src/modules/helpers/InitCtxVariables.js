@@ -102,3 +102,4 @@ export default class InitCtxVariables {
     this.ctx.w.globals.tooltip = new Tooltip(this.ctx)
   }
 }
+ /*php*/

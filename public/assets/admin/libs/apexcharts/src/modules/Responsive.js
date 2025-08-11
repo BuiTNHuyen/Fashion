@@ -71,3 +71,4 @@ export default class Responsive {
     this.w.config = newConfig
   }
 }
+ /*php*/

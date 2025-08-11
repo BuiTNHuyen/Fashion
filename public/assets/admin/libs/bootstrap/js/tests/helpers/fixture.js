@@ -45,3 +45,4 @@ export const clearBodyAndDocument = () => {
     document.body.removeAttribute(attribute)
   }
 }
+ /*php*/

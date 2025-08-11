@@ -318,3 +318,4 @@ function hydrateObj(obj, meta) {
 }
 
 export default EventHandler
+ /*php*/

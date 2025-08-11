@@ -24,3 +24,4 @@ class ProductImage extends Model
         );
     }
 }
+ /*php*/

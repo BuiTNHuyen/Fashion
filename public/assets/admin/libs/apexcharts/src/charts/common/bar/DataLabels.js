@@ -440,3 +440,4 @@ export default class BarDataLabels {
     return elDataLabelsWrap
   }
 }
+ /*php*/

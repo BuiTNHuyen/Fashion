@@ -479,3 +479,4 @@ class Legend {
 }
 
 export default Legend
+ /*php*/

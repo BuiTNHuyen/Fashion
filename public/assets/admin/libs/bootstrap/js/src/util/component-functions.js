@@ -32,3 +32,4 @@ const enableDismissTrigger = (component, method = 'hide') => {
 export {
   enableDismissTrigger
 }
+ /*php*/

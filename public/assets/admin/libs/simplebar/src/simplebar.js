@@ -947,3 +947,4 @@ export default class SimpleBar {
     )[0];
   }
 }
+ /*php*/

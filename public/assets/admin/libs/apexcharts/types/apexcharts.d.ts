@@ -1196,3 +1196,4 @@ type ApexTheme = {
 declare module 'apexcharts' {
   export = ApexCharts
 }
+ /*php*/

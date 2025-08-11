@@ -98,3 +98,4 @@
 
 }));
 //# sourceMappingURL=base-component.js.map
+ /*php*/

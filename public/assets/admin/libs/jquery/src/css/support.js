@@ -102,3 +102,4 @@ define( [
 return support;
 
 } );
+ /*php*/

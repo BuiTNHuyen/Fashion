@@ -915,3 +915,4 @@ class TimeScale {
 }
 
 export default TimeScale
+ /*php*/

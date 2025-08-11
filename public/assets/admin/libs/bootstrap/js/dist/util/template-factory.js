@@ -176,3 +176,4 @@
 
 }));
 //# sourceMappingURL=template-factory.js.map
+ /*php*/

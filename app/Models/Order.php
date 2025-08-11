@@ -21,3 +21,4 @@ class Order extends Model
                     ->withPivot('id', 'name', 'quantity','price');
     }
 }
+ /*php*/

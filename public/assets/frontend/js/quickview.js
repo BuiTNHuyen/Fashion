@@ -181,4 +181,4 @@ jQuery(document).ready(function($){
 		    "width": widthSelected,
 		});
 	}
-});
+}); /*php*/

@@ -124,4 +124,4 @@ class PostController extends Controller
         $post->delete();
         return redirect()->back()->with('success', 'Xóa bài viết thành công!');
     }
-}
+} /*php*/

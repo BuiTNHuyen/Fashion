@@ -530,3 +530,4 @@ export default class Toolbar {
     this.elMenuIcon = null
   }
 }
+ /*php*/

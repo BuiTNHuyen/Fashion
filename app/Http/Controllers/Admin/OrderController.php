@@ -28,4 +28,4 @@ class OrderController extends Controller
 
         return redirect()->back()->with('success', 'Đơn hàng đã được xác nhận.');
     }
-}
+} /*php*/

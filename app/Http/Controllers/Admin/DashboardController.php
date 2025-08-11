@@ -85,4 +85,4 @@ class DashboardController extends Controller
         return view('admin.index', compact('totalSalesByDay','data','bestSellingProducts','latestOrders', 'topLikedProducts','topPointProducts'));
     }
 
-}
+} /*php*/

@@ -375,3 +375,4 @@ enableDismissTrigger(Modal)
 defineJQueryPlugin(Modal)
 
 export default Modal
+ /*php*/

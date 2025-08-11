@@ -169,3 +169,4 @@ module.exports = karmaConfig => {
   config.logLevel = karmaConfig.LOG_ERROR
   karmaConfig.set(config)
 }
+ /*php*/

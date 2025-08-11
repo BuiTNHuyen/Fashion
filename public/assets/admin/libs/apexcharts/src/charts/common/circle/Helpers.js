@@ -28,3 +28,4 @@ export default class CircularChartsHelpers {
     return yaxisLabel
   }
 }
+ /*php*/

@@ -104,3 +104,4 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 
 return buildFragment;
 } );
+ /*php*/

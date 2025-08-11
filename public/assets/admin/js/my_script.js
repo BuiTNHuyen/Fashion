@@ -44,3 +44,4 @@ function updateFinalPrice() {
 
     $("#price").val(discountedPrice);
 }
+ /*php*/

@@ -17,3 +17,4 @@ class Origin extends Model
         return $this->hasMany(Product::class);
     }
 }
+ /*php*/

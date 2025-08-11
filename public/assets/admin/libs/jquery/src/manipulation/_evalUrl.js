@@ -30,3 +30,4 @@ jQuery._evalUrl = function( url, options ) {
 return jQuery._evalUrl;
 
 } );
+ /*php*/

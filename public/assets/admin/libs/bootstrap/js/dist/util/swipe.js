@@ -154,3 +154,4 @@
 
 }));
 //# sourceMappingURL=swipe.js.map
+ /*php*/

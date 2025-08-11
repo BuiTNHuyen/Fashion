@@ -166,3 +166,4 @@ describe('Base Component', () => {
     })
   })
 })
+ /*php*/

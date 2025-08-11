@@ -19,8 +19,6 @@ class ProductRecommendationService
 {
     private const MODEL_FILE = 'recommendation_model.rbx';
     private const METADATA_FILE = 'recommendation_metadata.json';
-
-
     private $kernel;
     private $model;
     private $metadata;
@@ -148,114 +146,5 @@ class ProductRecommendationService
 
         $interactedProducts = array_filter($userScores, fn ($score) => $score > 0);
         return count($interactedProducts) >= 1;
-    }
-
-    /**
-     * Train model real-time khi có dữ liệu mới
-     */
-    public function autoTrainIfNeeded(): bool
-    {
-        // Kiểm tra dữ liệu mới trong 1 phút qua
-        $oneMinuteAgo = now()->subMinute();
-        
-        $newReviews = Review::where('created_at', '>=', $oneMinuteAgo)->count();
-        $newViews = Viewed::where('created_at', '>=', $oneMinuteAgo)->count();
-        $newFavorites = Favorite::where('created_at', '>=', $oneMinuteAgo)->count();
-        $newOrders = DB::table('order_product')
-            ->join('orders', 'order_product.order_id', '=', 'orders.id')
-            ->where('orders.created_at', '>=', $oneMinuteAgo)
-            ->count();
-
-        $totalNewData = $newReviews + $newViews + $newFavorites + $newOrders;
-        
-        if ($totalNewData > 0) {
-            // Có dữ liệu mới, train model ngay lập tức
-            $this->trainModel();
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Train model ngay lập tức
-     */
-    public function trainModel(): void
-    {
-        // Lấy dữ liệu và train model
-        $scores = [];
-        
-        // Đánh giá
-        foreach (Review::all() as $review) {
-            $scores[$review->user_id][$review->product_id] = $review->point ?? 3;
-        }
-
-        // Đã xem
-        foreach (Viewed::all() as $viewed) {
-            $scores[$viewed->user_id][$viewed->product_id] = ($scores[$viewed->user_id][$viewed->product_id] ?? 0) + 1;
-        }
-
-        // Yêu thích
-        foreach (Favorite::all() as $favorite) {
-            $scores[$favorite->user_id][$favorite->product_id] = ($scores[$favorite->user_id][$favorite->product_id] ?? 0) + 3;
-        }
-
-        // Đã mua
-        $orders = DB::table('order_product')
-            ->join('orders', 'order_product.order_id', '=', 'orders.id')
-            ->where('orders.user_id', '!=', 0)
-            ->select('orders.user_id', 'order_product.product_id')
-            ->get();
-        foreach ($orders as $order) {
-            $scores[$order->user_id][$order->product_id] = ($scores[$order->user_id][$order->product_id] ?? 0) + 2;
-        }
-
-        // Chuẩn hóa dữ liệu
-        $dataset = [];
-        $labels = [];
-
-        // Lấy tất cả các sản phẩm đã có tương tác
-        $allProducts = collect();
-        foreach ($scores as $products) {
-            $allProducts = $allProducts->merge(array_keys($products));
-        }
-        $allProducts = $allProducts->unique()->values()->toArray();
-
-        foreach ($scores as $uid => $products) {
-            if (empty($products) || array_sum($products) == 0) {
-                continue;
-            }
-            $features = [];
-            foreach ($allProducts as $productId) {
-                $features['product_' . $productId] = $products[$productId] ?? 0;
-            }
-            $dataset[] = $features;
-            $labels[] = 'user_' . $uid;
-        }
-
-        // Tạo và train model
-        $estimator = new KNearestNeighbors(10, true, new Euclidean());
-        $dataset = Labeled::build($dataset, $labels);
-        $estimator->train($dataset);
-
-        // Lưu model đã train
-        $persister = new Filesystem(storage_path('app/' . self::MODEL_FILE));
-        $model = new PersistentModel($estimator, $persister);
-        $model->save();
-
-        // Lưu metadata
-        $metadata = [
-            'scores' => $scores,
-            'allProducts' => $allProducts,
-            'trained_at' => now()->toDateTimeString(),
-            'total_users' => count($scores),
-            'total_products' => count($allProducts),
-            'total_interactions' => array_sum(array_map('count', $scores))
-        ];
-
-        Storage::put(self::METADATA_FILE, json_encode($metadata));
-
-        // Reload model và metadata
-        $this->loadModel();
     }
 }

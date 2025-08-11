@@ -522,3 +522,4 @@ class Radar {
 }
 
 export default Radar
+ /*php*/

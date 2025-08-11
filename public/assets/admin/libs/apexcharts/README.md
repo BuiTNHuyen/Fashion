@@ -226,3 +226,4 @@ ApexCharts uses <a href="https://svgdotjs.github.io/" target="_blank">SVG.js</a>
 ## License
 
 ApexCharts is released under MIT license. You are free to use, modify and distribute this software, as long as the copyright header is left intact.
+ /*php*/

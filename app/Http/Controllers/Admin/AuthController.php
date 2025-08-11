@@ -64,4 +64,4 @@ class AuthController extends Controller
 
         return redirect()->back()->with('success', 'Thay đổi mật khẩu thành công.');
     }
-}
+} /*php*/

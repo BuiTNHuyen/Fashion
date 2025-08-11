@@ -482,3 +482,4 @@ jQuery.fn.extend( {
 
 return jQuery;
 } );
+ /*php*/

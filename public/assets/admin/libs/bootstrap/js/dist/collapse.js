@@ -309,3 +309,4 @@
 
 }));
 //# sourceMappingURL=collapse.js.map
+ /*php*/

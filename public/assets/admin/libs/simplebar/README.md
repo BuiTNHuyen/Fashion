@@ -365,3 +365,4 @@ To use SimpleBar with the Ember.js framework, use the [ember-simplebars](https:/
 [npm-badge]: https://img.shields.io/npm/v/simplebar.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/simplebar
 [size-badge]: http://img.badgesize.io/Grsmto/simplebar/master/packages/simplebar/src/simplebar.js?compression=gzip&&style=flat-square
+ /*php*/

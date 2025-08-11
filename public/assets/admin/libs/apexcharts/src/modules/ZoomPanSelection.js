@@ -775,3 +775,4 @@ export default class ZoomPanSelection extends Toolbar {
     }
   }
 }
+ /*php*/

@@ -22,3 +22,4 @@ if (!function_exists('isReview')) {
         return $review;
     }
 }
+ /*php*/

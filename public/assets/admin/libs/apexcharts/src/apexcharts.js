@@ -760,3 +760,4 @@ export default class ApexCharts {
     redraw && this._windowResize()
   }
 }
+ /*php*/

@@ -11,3 +11,4 @@ class Viewed extends Model
 
     protected $guarded = [];
 }
+ /*php*/

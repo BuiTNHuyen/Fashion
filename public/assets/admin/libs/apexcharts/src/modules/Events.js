@@ -116,3 +116,4 @@ export default class Events {
       e.type === 'touchmove' ? e.touches[0].clientY : e.clientY
   }
 }
+ /*php*/

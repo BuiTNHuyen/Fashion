@@ -103,3 +103,4 @@ describe('Sanitizer', () => {
     })
   })
 })
+ /*php*/

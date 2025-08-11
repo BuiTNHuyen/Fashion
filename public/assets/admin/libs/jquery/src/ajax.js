@@ -856,3 +856,4 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 
 return jQuery;
 } );
+ /*php*/

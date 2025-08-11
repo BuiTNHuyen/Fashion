@@ -6,3 +6,4 @@ define( function() {
 	// https://html.spec.whatwg.org/multipage/syntax.html#tag-name-state
 	return ( /<([a-z][^\/\0>\x20\t\r\n\f]*)/i );
 } );
+ /*php*/

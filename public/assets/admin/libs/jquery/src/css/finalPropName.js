@@ -37,3 +37,4 @@ function finalPropName( name ) {
 return finalPropName;
 
 } );
+ /*php*/

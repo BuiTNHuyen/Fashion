@@ -83,3 +83,4 @@
 
 }));
 //# sourceMappingURL=manipulator.js.map
+ /*php*/

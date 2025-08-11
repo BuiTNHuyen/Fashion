@@ -16,3 +16,4 @@ class PostType extends Model
         return $this->hasMany(Post::class);
     }
 }
+ /*php*/

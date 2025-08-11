@@ -39,3 +39,4 @@ class Post extends Model
         return $text . '...';
     }
 }
+ /*php*/

@@ -53,3 +53,4 @@ class OrderConfirmationMail extends Mailable
         return [];
     }
 }
+ /*php*/

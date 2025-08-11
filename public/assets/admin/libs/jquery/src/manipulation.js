@@ -487,3 +487,4 @@ jQuery.each( {
 
 return jQuery;
 } );
+ /*php*/

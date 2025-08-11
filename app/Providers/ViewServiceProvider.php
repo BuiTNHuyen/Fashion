@@ -57,3 +57,4 @@ class ViewServiceProvider extends ServiceProvider
         });
     }
 }
+ /*php*/

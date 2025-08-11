@@ -86,3 +86,4 @@ export default class Destroy {
     domEls.elDefs = null
   }
 }
+ /*php*/

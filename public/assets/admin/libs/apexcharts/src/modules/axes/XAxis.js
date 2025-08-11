@@ -631,3 +631,4 @@ export default class XAxis {
   //   w.globals.dom.elGraphical.add(plotBand)
   // }
 }
+ /*php*/

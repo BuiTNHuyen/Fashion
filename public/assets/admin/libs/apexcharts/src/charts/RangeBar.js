@@ -452,3 +452,4 @@ class RangeBar extends Bar {
 }
 
 export default RangeBar
+ /*php*/

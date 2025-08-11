@@ -426,3 +426,4 @@ class BoxCandleStick extends Bar {
 }
 
 export default BoxCandleStick
+ /*php*/

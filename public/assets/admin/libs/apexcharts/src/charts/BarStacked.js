@@ -479,3 +479,4 @@ class BarStacked extends Bar {
 }
 
 export default BarStacked
+ /*php*/

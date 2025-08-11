@@ -224,3 +224,4 @@ export default class Globals {
     return globals
   }
 }
+ /*php*/

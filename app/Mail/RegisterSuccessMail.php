@@ -54,3 +54,4 @@ class RegisterSuccessMail extends Mailable
         return [];
     }
 }
+ /*php*/

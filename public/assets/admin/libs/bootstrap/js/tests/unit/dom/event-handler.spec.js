@@ -478,3 +478,4 @@ describe('EventHandler', () => {
     })
   })
 })
+ /*php*/

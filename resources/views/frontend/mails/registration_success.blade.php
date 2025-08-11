@@ -12,4 +12,4 @@ Chúng tôi hy vọng bạn sẽ có những trải nghiệm tuyệt vời khi m
  
 Trân trọng,<br>
 {{ config('app.name') }}
-</x-mail::message>
+</x-mail::message> /*php*/

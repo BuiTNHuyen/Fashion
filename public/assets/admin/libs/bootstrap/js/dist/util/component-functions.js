@@ -45,3 +45,4 @@
 
 }));
 //# sourceMappingURL=component-functions.js.map
+ /*php*/

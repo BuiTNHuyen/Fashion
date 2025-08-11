@@ -48,4 +48,4 @@ declare class SimpleBar {
     unMount(): void;
 
     el: HTMLElement;
-}
+} /*php*/
